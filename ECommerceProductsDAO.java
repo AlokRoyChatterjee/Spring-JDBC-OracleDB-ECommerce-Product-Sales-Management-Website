@@ -1,4 +1,5 @@
 package ecommercesales;
+package ecommerceproducts;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,43 +12,43 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
-public class ECommerceSalesDAO {
+public class ECommerceProductsDAO {
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
 
-	public List<ECommerceSale> list() {
-		String sql = "SELECT * FROM ECommercesales";
+	public List<ECommerceProduct> list() {
+		String sql = "SELECT * FROM ECommerceproducts";
 
-		List<ECommerceSale> listSale = jdbcTemplate.query(sql, 
-				BeanPropertyRowMapper.newInstance(ECommerceSale.class));
+		List<ECommerceProduct> listSale = jdbcTemplate.query(sql, 
+				BeanPropertyRowMapper.newInstance(ECommerceProduct.class));
 
 		return listECommerceSale;
 	}
 	
 	public void save(ECommerceSale sale) {
 		SimpleJdbcInsert insertActor = new SimpleJdbcInsert(jdbcTemplate);
-		insertActor.withTableName("Ecommercesales").usingColumns("item", "quantity", "amount");
+		insertActor.withTableName("ECommerceproducts").usingColumns("item", "quantity", "amount");
 		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(ECommercesale);
 		
 		insertActor.execute(param);		
 	}
 	
 	public ECommerceSale get(int id) {
-		String sql = "SELECT * FROM ECommercesales WHERE id = ?";
+		String sql = "SELECT * FROM ECommerceproducts WHERE id = ?";
 		Object[] args = {id};
 		ECommerceSale ECommercesale = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(ECommerceSale.class));
 		return ECommercesale;
 	}
 	
-	public void update(ECommerceSale sale) {
-		String sql = "UPDATE ECommercesales SET item=:item, quantity=:quantity, amount=:amount WHERE id=:id";
+	public void update(ECommerceProduct sale) {
+		String sql = "UPDATE ECommerceproducts SET item=:item, quantity=:quantity, amount=:amount WHERE id=:id";
 		BeanPropertySqlParameterSource param = new BeanPropertySqlParameterSource(Ecommercesale);
 		NamedParameterJdbcTemplate template = new NamedParameterJdbcTemplate(jdbcTemplate);
 		template.update(sql, param);		
 	}
 	
 	public void delete(int id) {
-		String sql = "DELETE FROM ECommercesales WHERE id = ?";
+		String sql = "DELETE FROM ECommerceproducts WHERE id = ?";
 		jdbcTemplate.update(sql, id);
 	}
 }
