@@ -1,7 +1,5 @@
-package ecommercesales;
 package ecommerceproducts;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -36,8 +34,8 @@ public class ECommerceProductsDAO {
 	public ECommerceSale get(int id) {
 		String sql = "SELECT * FROM ECommerceproducts WHERE id = ?";
 		Object[] args = {id};
-		ECommerceSale ECommercesale = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(ECommerceSale.class));
-		return ECommercesale;
+		ECommerceProduct product = jdbcTemplate.queryForObject(sql, args, BeanPropertyRowMapper.newInstance(ECommerceProduct.class));
+		return product;
 	}
 	
 	public void update(ECommerceProduct sale) {
