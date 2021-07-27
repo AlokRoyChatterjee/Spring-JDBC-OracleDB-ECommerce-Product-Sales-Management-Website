@@ -14,7 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AppController {
 	
 	@Autowired
-	private SalesDAO dao;
+	private ECommerceProductsDAO dao;
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
@@ -25,7 +25,7 @@ public class AppController {
 	
 	@RequestMapping("/new")
 	public String showNewForm(Model model) {
-	    ECommerceProduct product = new ECommerceSale();
+	    ECommerceProduct product = new ECommerceProduct();
 	    model.addAttribute("sale", product);
 	     
 	    return "addingproduct";
@@ -34,7 +34,6 @@ public class AppController {
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String save(@ModelAttribute("sale") ECommerceProduct product) {
 	    dao.save(product);
-	     
 	    return "redirect:/";
 	}
 	
@@ -43,14 +42,12 @@ public class AppController {
 	    ModelAndView mav = new ModelAndView("changeproduct");
 	    ECommerceProduct product = dao.get(id);
 	    mav.addObject("sale", product);
-	     
 	    return mav;
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(@ModelAttribute("sale") ECommerceProduct product) {
 	    dao.update(product);
-	     
 	    return "redirect:/";
 	}
 	
