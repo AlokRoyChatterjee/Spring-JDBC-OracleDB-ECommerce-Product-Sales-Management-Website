@@ -2,9 +2,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ECommerceSalesWebsite {
+public class ECommerceProductssWebsite {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ECommerceSalesWebsite.class, args);
+		SpringApplication.run(ECommerceProductsWebsite.class, args);
 	}
 }
