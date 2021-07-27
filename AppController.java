@@ -18,38 +18,38 @@ public class AppController {
 	
 	@RequestMapping("/")
 	public String viewHomePage(Model model) {
-		List<Sale> listSale = dao.list();
+		List<ECommerceProduct> listSale = dao.list();
 		model.addAttribute("listSale", listSale);
 	    return "index";
 	}
 	
 	@RequestMapping("/new")
 	public String showNewForm(Model model) {
-	    Sale sale = new Sale();
-	    model.addAttribute("sale", sale);
+	    ECommerceProduct product = new ECommerceSale();
+	    model.addAttribute("sale", product);
 	     
-	    return "new_form";
+	    return "addingproduct";
 	}
 	
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String save(@ModelAttribute("sale") Sale sale) {
-	    dao.save(sale);
+	public String save(@ModelAttribute("sale") ECommerceProduct product) {
+	    dao.save(product);
 	     
 	    return "redirect:/";
 	}
 	
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditForm(@PathVariable(name = "id") int id) {
-	    ModelAndView mav = new ModelAndView("edit_form");
-	    Sale sale = dao.get(id);
-	    mav.addObject("sale", sale);
+	    ModelAndView mav = new ModelAndView("changeproduct");
+	    ECommerceProduct product = dao.get(id);
+	    mav.addObject("sale", product);
 	     
 	    return mav;
 	}
 	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String update(@ModelAttribute("sale") Sale sale) {
-	    dao.update(sale);
+	public String update(@ModelAttribute("sale") ECommerceProduct product) {
+	    dao.update(product);
 	     
 	    return "redirect:/";
 	}
