@@ -1,15 +1,15 @@
-package ecommercesales;
+package ecommerceproducts;
 
-public class ECommerceSale {
+public class ECommerceProduct {
 	private int id;
 	private String item;
 	private int quantity;
 	private float amount;
 
-	protected ECommerceSale() {
+	protected ECommerceProduct() {
 	}
 
-	protected ECommerceSale(String item, int quantity, float amount) {
+	protected ECommerceProduct(String item, int quantity, float amount) {
 		this.item = item;
 		this.quantity = quantity;
 		this.amount = amount;
@@ -49,7 +49,7 @@ public class ECommerceSale {
 
 	@Override
 	public String toString() {
-		return "ECommerceSale [id=" + id + ", item=" + item + ", quantity=" + quantity + ", amount=" + amount + "]";
+		return "ECommerceProduct [id=" + id + ", item=" + item + ", quantity=" + quantity + ", amount=" + amount + "]";
 	}
 
 	
