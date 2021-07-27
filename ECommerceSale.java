@@ -1,4 +1,4 @@
-package net.codejava;
+package ecommercesales;
 
 public class ECommerceSale {
 	private int id;
